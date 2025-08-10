@@ -24,10 +24,10 @@ export OPENAI_API_KEY=""
 
 ### Step 1 Downloading Benchmark & Generating .tsv File
 Downloading benchmark:
-Please search XiaohanSong/test_data at Hugging Face and download the folder test_data.
+Please search XiaohanSong/V-SocialBench at Hugging Face and download the folder test_data.
 
 Generating .tsv file:
-Go to visual_social.py, find line 110 and 120, and fill in the paths of test_qtva.json and test_slices of our benchmark. 
+Go to visual_social.py, find line 119 and 120, and fill in the paths of test_qtva.json and test_slices of our benchmark. 
 ```bash
 json_file = "" # path for test_qtva.json  
 image_folder = ""  # path for test_slices/
