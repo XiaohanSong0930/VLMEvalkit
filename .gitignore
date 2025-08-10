@@ -172,23 +172,24 @@ demo.ipynb
 GPT4o_MINI/
 
 # irrelevant api scripts
-vlmeval/api/bailingmm.py
-vlmeval/api/base.py
-vlmeval/api/bluelm_v_api.py
-vlmeval/api/claude.py
-vlmeval/api/cloudwalk.py
-vlmeval/api/doubao_vl_api.py
-vlmeval/api/gemini.py
-vlmeval/api/hf_chat_model.py
-vlmeval/api/hunyuan.py
-vlmeval/api/jt_vl_chat.py
-vlmeval/api/lmdeploy.py
-vlmeval/api/reka.py
-vlmeval/api/sensechat_vision.py
-vlmeval/api/siliconflow.py
-vlmeval/api/stepai.py
-vlmeval/api/taichu.py
-vlmeval/api/taiyi.py
+
+# vlmeval/api/bailingmm.py
+# vlmeval/api/base.py
+# vlmeval/api/bluelm_v_api.py
+# vlmeval/api/claude.py
+# vlmeval/api/cloudwalk.py
+# vlmeval/api/doubao_vl_api.py
+# vlmeval/api/gemini.py
+# vlmeval/api/hf_chat_model.py
+# vlmeval/api/hunyuan.py
+# vlmeval/api/jt_vl_chat.py
+# vlmeval/api/lmdeploy.py
+# vlmeval/api/reka.py
+# vlmeval/api/sensechat_vision.py
+# vlmeval/api/siliconflow.py
+# vlmeval/api/stepai.py
+# vlmeval/api/taichu.py
+# vlmeval/api/taiyi.py
 
 # visual_social_grouped.tsv
 visual_social_grouped_local.tsv

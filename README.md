@@ -27,7 +27,7 @@ Downloading benchmark:
 Please search XiaohanSong/test_data at Hugging Face and download the folder test_data.
 
 Generating .tsv file:
-Go to visual_social.py, find line 80 and 90, and fill in the paths of test_qtva.json and test_slices of our benchmark. 
+Go to visual_social.py, find line 110 and 120, and fill in the paths of test_qtva.json and test_slices of our benchmark. 
 ```bash
 json_file = "" # path for test_qtva.json  
 image_folder = ""  # path for test_slices/
@@ -47,8 +47,8 @@ data_path = ''
 ### Step 3 Evaluation for Qwen and GPT4o
 Use the following commands.
 ```bash
-python run.py --data visual_social --model QwenVLPlus  —verbose
-python run.py --data visual_social --model GPT4o  —verbose
+python run.py --data visual_social --model QwenVLPlus  -—verbose
+python run.py --data visual_social --model GPT4o  -—verbose
 ```
 
 ## Acknowledgement

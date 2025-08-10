@@ -11,6 +11,8 @@ import json
 import base64
 from uuid import uuid4
 import hashlib
+from pathlib import Path
+import re
 
 
 def encode_image_to_base64(img, target_size=-1):
@@ -43,6 +45,7 @@ def md5(s):
 def encode_images(image_list, image_folder):
     base64_images = []
     for image_name in image_list:
+        image_name = Path(image_name).name
         image_path = os.path.join(image_folder, image_name)
         if os.path.exists(image_path):
             with open(image_path, "rb") as img_file:
@@ -50,6 +53,35 @@ def encode_images(image_list, image_folder):
         else:
             print(f"Warning: {image_path} not found.")
     return ";".join(base64_images)
+
+def _norm_text(s: str) -> str:
+    if s is None:
+        return ""
+    s = s.strip()
+    s = re.sub(r'[\s\.\!\?;:]+$', '', s)
+    s = re.sub(r'\s+', ' ', s)
+    return s.lower()
+
+def get_answer_letter_from_item(item: dict) -> str:
+    ans = str(item.get("answer", "")).strip()
+
+    m = re.match(r'^\s*([ABCD])\s*[\)\.\:：]?\s*$', ans, re.I)
+    if m:
+        return m.group(1).upper()
+
+    options = {k: str(item.get(k, "")).strip() for k in ["A", "B", "C", "D"] if k in item}
+    norm_ans = _norm_text(ans)
+
+    for k, v in options.items():
+        if _norm_text(v) == norm_ans:
+            return k
+
+    for k, v in options.items():
+        if norm_ans and _norm_text(v).startswith(norm_ans):
+            return k
+
+    print(f"Warning: cannot match answer '{ans}' to options {options}")
+    return ""
 
 
 def process_json_to_tsv(json_file, image_folder, output_tsv):
@@ -60,25 +92,23 @@ def process_json_to_tsv(json_file, image_folder, output_tsv):
     index = 0
     
     for item in data:
+        answer_letter = get_answer_letter_from_item(item)
+
         messages = item.get("messages", [])
         for message in messages:
             content = message.get("content", [])
             images = []
             question = ""
-            answer = ""
-            
+
             for entry in content:
-                if entry["type"] == "image":
-                    images.append(entry["image"])
-                elif entry["type"] == "text":
+                if entry.get("type") == "image":
+                    images.append(entry.get("image", ""))
+                elif entry.get("type") == "text":
                     if not question:
-                        question = entry["text"]
-                    else:
-                        answer = entry["text"]
-            
+                        question = entry.get("text", "")
+
             encoded_images = encode_images(images, image_folder)
-            
-            rows.append([index, encoded_images, question, answer])
+            rows.append([index, encoded_images, question, answer_letter])
             index += 1
 
     df = pd.DataFrame(rows, columns=["index", "image", "question", "answer"])
