@@ -47,8 +47,8 @@ data_path = ''
 ### Step 3 Evaluation for Qwen and GPT4o
 Use the following commands.
 ```bash
-python run.py --data visual_social --model QwenVLPlus  -—verbose
-python run.py --data visual_social --model GPT4o  -—verbose
+python run.py --data visual_social --model QwenVLPlus  --verbose
+python run.py --data visual_social --model GPT4o  --verbose
 ```
 
 ## Acknowledgement

@@ -26,7 +26,7 @@ def build_judge(**kwargs):
             'deepseek': 'deepseek-ai/DeepSeek-V2.5',
         }
         import pdb 
-        pdb.set_trace() # p model
+        #pdb.set_trace() # p model
         model = 'gpt-4o'
         model_version = model_map[model]
     else:

@@ -1519,7 +1519,7 @@ class visual_social(ImageBaseDataset):
         nproc = judge_kwargs.pop("nproc", 4)
 
         import pdb
-        pdb.set_trace()
+        #pdb.set_trace()
 
         if not osp.exists(storage):
             data = load(eval_file)
@@ -1527,7 +1527,7 @@ class visual_social(ImageBaseDataset):
 
             if not model.working():
                 raise RuntimeError("Visual-Social evaluation requires a working LLM API")
-            pdb.set_trace()
+            #pdb.set_trace()
             total = len(data)
             lines = [data.iloc[i] for i in range(total)]
             tasks = [(model, line) for line in lines]
@@ -1554,7 +1554,7 @@ class visual_social(ImageBaseDataset):
                     assert idx in results
                     assert results[idx]["log"] == res["log"] and results[idx]["res"] == res["res"]
 
-            pdb.set_trace()
+            #pdb.set_trace()
             data["res"] = [results[idx]["res"] for idx in data["index"]]
             data["log"] = [results[idx]["log"] for idx in data["index"]]
             dump(data, storage)

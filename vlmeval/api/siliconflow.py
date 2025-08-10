@@ -265,7 +265,7 @@ class TeleMMAPI(SiliconFlowAPI):
         try:
             resp_struct = json.loads(response.text)
             import pdb
-            pdb.set_trace()
+            #pdb.set_trace()
             answer = resp_struct["choices"][0]["message"]["content"].strip()
             return ret_code, answer, response
         except Exception as err:

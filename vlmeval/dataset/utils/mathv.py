@@ -188,7 +188,7 @@ from tqdm import tqdm
 
 def MATH_V_acc(result_file):
     import pdb
-    pdb.set_trace()
+    #pdb.set_trace()
     data = load(result_file)
     
     tot = 0  
